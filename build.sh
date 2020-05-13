@@ -12,7 +12,7 @@ if [ ! -f "./.env" ]; then
 fi
 
 if [ ! -f "./apps/symfony-blog/README.md" ]; then
-    git clone https://github.com/michalporembski/symfony_blog.git ./apps/symfony-blog
+    git clone git@github.com:michalporembski/symfony_blog.git ./apps/symfony-blog
 fi
 
 if [ ! -f "./apps/symfony-blog/composer.phar" ]; then
@@ -30,4 +30,4 @@ fi
 
 docker-compose up -d
 docker exec -u 0 -it symfony_php_1 chmod 777 -R /.composer
-docker exec -it symfony_php_1 php composer.phar install
+docker exec -it symfony_php_1 php -d memory_limit=-1 composer.phar install
